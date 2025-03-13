@@ -1,11 +1,12 @@
 import socket
 import sys
 import select
+import get_wlan
 
 def run_client():
     try:
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        server_address = ("127.0.0.1", 8080)
+        server_address = (get_wlan.get_wifi_ip(), 8080)
         client.connect(server_address)
         print(f"Connected to server at {server_address[0]}:{server_address[1]}")
         

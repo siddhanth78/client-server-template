@@ -1,6 +1,7 @@
 import socket
 import threading
 import sys
+import get_wlan
 
 def handle_client(client_socket, client_address, client_list):
     try:
@@ -57,7 +58,7 @@ def run_server():
     try:
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        server_address = ("127.0.0.1", 8080)
+        server_address = (get_wlan.get_wifi_ip(), 8080)
         server.bind(server_address)
         
         server.listen(5)
